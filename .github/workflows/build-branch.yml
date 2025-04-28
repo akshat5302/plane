@@ -117,137 +117,137 @@ jobs:
         name: Checkout Files
         uses: actions/checkout@v4
 
-  branch_build_push_admin:
-    name: Build-Push Admin Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Admin Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_admin }}
-          build-context: .
-          dockerfile-path: ./admin/Dockerfile.admin
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_admin:
+  #   name: Build-Push Admin Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Admin Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_admin }}
+  #         build-context: .
+  #         dockerfile-path: ./admin/Dockerfile.admin
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
-  branch_build_push_web:
-    name: Build-Push Web Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Web Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_web }}
-          build-context: .
-          dockerfile-path: ./web/Dockerfile.web
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_web:
+  #   name: Build-Push Web Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Web Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_web }}
+  #         build-context: .
+  #         dockerfile-path: ./web/Dockerfile.web
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
-  branch_build_push_space:
-    name: Build-Push Space Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Space Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_space }}
-          build-context: .
-          dockerfile-path: ./space/Dockerfile.space
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_space:
+  #   name: Build-Push Space Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Space Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_space }}
+  #         build-context: .
+  #         dockerfile-path: ./space/Dockerfile.space
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
-  branch_build_push_live:
-    name: Build-Push Live Collaboration Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Live Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_live }}
-          build-context: .
-          dockerfile-path: ./live/Dockerfile.live
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_live:
+  #   name: Build-Push Live Collaboration Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Live Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_live }}
+  #         build-context: .
+  #         dockerfile-path: ./live/Dockerfile.live
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
-  branch_build_push_apiserver:
-    name: Build-Push API Server Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Backend Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_backend }}
-          build-context: ./apiserver
-          dockerfile-path: ./apiserver/Dockerfile.api
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_apiserver:
+  #   name: Build-Push API Server Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Backend Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_backend }}
+  #         build-context: ./apiserver
+  #         dockerfile-path: ./apiserver/Dockerfile.api
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
-  branch_build_push_proxy:
-    name: Build-Push Proxy Docker Image
-    runs-on: ubuntu-22.04
-    needs: [branch_build_setup]
-    steps:
-      - name: Proxy Build and Push
-        uses: makeplane/actions/build-push@v1.0.0
-        with:
-          build-release: ${{ needs.branch_build_setup.outputs.build_release }}
-          build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
-          release-version: ${{ needs.branch_build_setup.outputs.release_version }}
-          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          docker-image-owner: makeplane
-          docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_proxy }}
-          build-context: ./nginx
-          dockerfile-path: ./nginx/Dockerfile
-          buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
-          buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
-          buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
-          buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
+  # branch_build_push_proxy:
+  #   name: Build-Push Proxy Docker Image
+  #   runs-on: ubuntu-22.04
+  #   needs: [branch_build_setup]
+  #   steps:
+  #     - name: Proxy Build and Push
+  #       uses: makeplane/actions/build-push@v1.0.0
+  #       with:
+  #         build-release: ${{ needs.branch_build_setup.outputs.build_release }}
+  #         build-prerelease: ${{ needs.branch_build_setup.outputs.build_prerelease }}
+  #         release-version: ${{ needs.branch_build_setup.outputs.release_version }}
+  #         dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+  #         docker-image-owner: makeplane
+  #         docker-image-name: ${{ needs.branch_build_setup.outputs.dh_img_proxy }}
+  #         build-context: ./nginx
+  #         dockerfile-path: ./nginx/Dockerfile
+  #         buildx-driver: ${{ needs.branch_build_setup.outputs.gh_buildx_driver }}
+  #         buildx-version: ${{ needs.branch_build_setup.outputs.gh_buildx_version }}
+  #         buildx-platforms: ${{ needs.branch_build_setup.outputs.gh_buildx_platforms }}
+  #         buildx-endpoint: ${{ needs.branch_build_setup.outputs.gh_buildx_endpoint }}
 
   publish_release:
     if: ${{ needs.branch_build_setup.outputs.build_type == 'Release' }}
