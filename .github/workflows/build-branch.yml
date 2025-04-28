@@ -255,13 +255,13 @@ jobs:
     runs-on: ubuntu-22.04
     needs:
       [
-        branch_build_setup,
-        branch_build_push_admin,
-        branch_build_push_web,
-        branch_build_push_space,
-        branch_build_push_live,
-        branch_build_push_apiserver,
-        branch_build_push_proxy,
+        branch_build_setup
+        # branch_build_push_admin,
+        # branch_build_push_web,
+        # branch_build_push_space,
+        # branch_build_push_live,
+        # branch_build_push_apiserver,
+        # branch_build_push_proxy,
       ]
     env:
       REL_VERSION: ${{ needs.branch_build_setup.outputs.release_version }}
