@@ -138,16 +138,16 @@ jobs:
 
   branch_build_push_admin:
     name: Build-Push Admin Docker Image
-    needs: [pre-requisites]
+    needs: [branch_build_setup]
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
       contents: read
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          ref: refs/pull/${{ github.event.client_payload.pull_request.number }}/merge
+      # - name: Checkout Code
+      #   uses: actions/checkout@v4
+      #   # with:
+      #   #   ref: refs/pull/${{ github.event.client_payload.pull_request.number }}/merge
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -163,7 +163,7 @@ jobs:
           push: true
           context: .
           file: ./apps/admin/Dockerfile.admin
-          tags: makeplane/plane-admin:${{ needs.pre-requisites.outputs.release_version }}
+          tags: makeplane/plane-admin:${{ needs.branch_build_setup.outputs.release_version }}
 
   branch_build_push_web:
     name: Build-Push Web Docker Image
